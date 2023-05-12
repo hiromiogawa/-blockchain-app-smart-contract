@@ -12,8 +12,12 @@ contract Transactions {
 
   TransferStruct[] transactions;
 
+  event Transfer(address from, address receiver, uint amount );
+
   function addToBlockChain(address payable receiver, uint amount) public {
     transactions.push(TransferStruct(msg.sender, receiver, amount));
+
+    emit Transfer(msg.sender, receiver, amount);
   }
 
 }
